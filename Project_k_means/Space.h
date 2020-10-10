@@ -1,9 +1,8 @@
 #pragma once
+#include<stdio.h>
 #include<random>
 #include<vector>
 #include<time.h>
-using std::vector;
-
 
 class Space
 {
@@ -12,11 +11,13 @@ private:
 	int numDimension = 0;
 	float dataLo = 0;
 	float dataHi = 0;
-	vector<vector<float>> data;
+	std::vector<std::vector<float>> data;
 public:
-	Space(int,int);
+	//d-> data's dimension
+	//n-> number of datas
+	Space(int d, int n);
 	~Space();
 	void initializationData(float, float);
-	vector<vector<float>> getData();
+	std::vector<std::vector<float>> getData();
 };
 

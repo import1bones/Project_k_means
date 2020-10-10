@@ -1,5 +1,9 @@
 #include "Space.h"
-//d-> data's d
+using std::vector;
+
+
+//d-> data's dimension
+//n-> number of datas
 Space::Space(int d, int n)
 {
 	numDimension = d;
@@ -10,6 +14,7 @@ Space::Space(int d, int n)
 Space::~Space()
 {
 }
+
 
 void Space::initializationData(float lo, float hi)
 {
