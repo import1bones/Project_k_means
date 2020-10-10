@@ -1,4 +1,9 @@
 #pragma once
+#ifdef DISPLAY_ALL_INFO
+#define DISPLAY true
+#else
+#define DISPLAY false
+#endif // DISPLAY_ALL_INFO
 #include"Space.h"
 #include<vector>
 
@@ -14,7 +19,10 @@ private:
 	std::vector<std::vector<std::vector<float>*>> category;
 	std::vector<std::vector<float>> categoryCentre;
 public:
+	//d -> data
+	//c -> number of category
 	KMeans(std::vector<std::vector<float>> d, int c);
+	//some setting
 	void setup(int i);
 	void initalCentre();
 	void iteration();

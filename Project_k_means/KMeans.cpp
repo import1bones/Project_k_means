@@ -36,12 +36,13 @@ void KMeans::initalCentre()
 			i++;
 		}
 	}
-	printf("\033[40;34m%s \033[0m\n", "[Inital] :");
+	printf("\033[41;36m%s \033[0m\n", "[Inital] :");
 	displayCentre();
 }
 
 void KMeans::iteration()
 {
+	printf_s("\033[41;36m%s %d\033[0m\n", "[summary]: parameters", numDimension * numDate);
 	for (int i = 0; i < numIteration; ++i)
 	{
 		calculateDistance();
@@ -53,13 +54,17 @@ void KMeans::iteration()
 		}
 		else
 		{
-			printf_s("\033[41;36m%s \033[0m", "[attention]: break!");
+			printf_s("\033[41;36m%s\t%d\033[0m\n", "[attention]: break in iteration :", i);
 			break;
 		}
-		printf_s("\033[40;35m%s \033[0m", "[iteration]:");
-		printf_s("\t%d\n", i);
-		displayCentre();
+		if (DISPLAY)
+		{
+			printf_s("\033[44;33m%s\t%d\033[0m\n", "[iteration]:", i);
+			displayCentre();
+		}
 	}
+	printf_s("\033[42;35m%s \033[0m\n", "[final centre]:");
+	displayCentre();
 }
 
 void KMeans::calculateDistance()
@@ -103,8 +108,7 @@ void KMeans::displayCentre()
 {
 	for (int i = 0; i < numCategory; i++)
 	{
-		printf_s("\t\033[41;36m%s \033[0m", "[centre]:");
-		printf_s("%d\t", i);
+		printf_s("\t\033[43;34m%s\t%d\033[0m\t", "[centre]:",i);
 		for (int j = 0; j < numDimension; j++)
 		{
 			printf_s("%f\t", categoryCentre[i][j]);
@@ -115,6 +119,8 @@ void KMeans::displayCentre()
 
 void KMeans::displayMeanDistance()
 {
+	//will display a category's all data's distance to the category's centre.
+	//the numer like loss in Gradient descent.
 }
 
 std::vector<std::vector<float>> KMeans::calculateCategoryCentre()
